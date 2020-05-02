@@ -1,11 +1,15 @@
 import React from 'react';
 import App from './App';
-import Names from "./Names.js"
+import Names from './Names.js'
+import Welcome from './Welcome.js'
 import './css/App.css'
 
 class MainDiv extends React.Component {
     state = {
-        user: []
+        user: [],
+        globalStyle: {
+            display: 'block'
+        }
     }
 
     updateState = (state) => {
@@ -29,7 +33,7 @@ class MainDiv extends React.Component {
                 obj.id == states.id
             ));
 
-            if (find || states.name.trim() === "") {
+            if (find) { // || states.name.trim() === "" => moved to App.js
                 console.log('shto')
                 return null;
             } else {
@@ -92,11 +96,21 @@ class MainDiv extends React.Component {
         })
     }
 
+    handleContinueBtn = () => {
+        this.setState({
+            globalStyle: {
+                display: 'none'
+            }
+        })
+    }
+
     render() {
         return ( 
             <div className = "maindiv">
-                <App takeState = {this.takeState}/> 
-                <Names handleDeleteBtn = {this.handleDeleteBtn} names = {this.state.user}/> 
+                <Welcome style={this.state.globalStyle} names={this.state.user} />
+                <br />
+                <App takeState={this.takeState} style={this.state.globalStyle}/> 
+                <Names handleContinueBtn={this.handleContinueBtn} handleDeleteBtn={this.handleDeleteBtn} names={this.state.user} style={this.state.globalStyle}/> 
             </div>
         );
     }

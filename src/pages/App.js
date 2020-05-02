@@ -12,6 +12,9 @@ class App extends React.Component {
     name: null,
     id: null,
   }
+
+  err;
+
   // handleForm = (e) => {
   //   e.preventDefault();
   //   this.state.user.push({
@@ -23,7 +26,7 @@ class App extends React.Component {
   // }
 
   handleChange = (e) => {
-
+    // console.log()
     // console.log(e.target.value)
     this.setState({
       name: e.target.value,
@@ -49,12 +52,14 @@ class App extends React.Component {
 
     // console.log(this.state)
 
-    if (this.state.name == null) {
+    if (this.state.name == null || this.state.name.trim() === "") {
+      this.err = "ERROR: You didn\n't write anything, please change it"
       this.setState({
         name: null,
         id: null
       })
     } else {
+      this.err = ""
       this.props.takeState(this.state) 
     }
 
@@ -63,7 +68,7 @@ class App extends React.Component {
   
   render() {
     return (
-      <div className="App flex-child">
+      <div className="App flex-child" style={this.props.style}>
           <h1>Hi, what's up?</h1>
           <form onSubmit={this.handleForm}>
             <div id="firstq">
@@ -72,8 +77,10 @@ class App extends React.Component {
             <button>Tell me your name</button>
             </div>
           </form>
-
           <br />
+          {/* {if (this.err.length() > 0) { } */}
+          <h1 >{this.err}</h1>
+          {/* { } } */}
         {/* <Names names={this.state.user}/> */}
       </div>
     );

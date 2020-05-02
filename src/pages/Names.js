@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Names = ({names, handleDeleteBtn}) => {
+const Names = ({names, handleDeleteBtn, handleContinueBtn, style}) => {
   let btn;
-
+  console.log(style)
 
 
   const nameList = names.map(name => {
@@ -17,6 +17,7 @@ const Names = ({names, handleDeleteBtn}) => {
 
     } else {
       return null;
+      
     }
   })
 
@@ -24,13 +25,13 @@ const Names = ({names, handleDeleteBtn}) => {
 
   if (names.length > 0) {
     // console.log(names)
-    btn = <button>Click here if you want to continue</button>
+    btn = <button onClick={handleContinueBtn}>Click here if you want to continue</button>
   } else {
     return null;
   }
 
   return(
-    <div className="namesList flex-child">
+    <div className="namesList flex-child" style={{display: style.display}}> 
       <h2>Id : name</h2>
 
       {nameList}
