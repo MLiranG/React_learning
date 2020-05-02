@@ -1,0 +1,43 @@
+
+
+html {
+  color: aliceblue;
+}
+
+body {
+  background-color: #282c34;
+}
+
+.App {
+  /* float: left; */
+  /* display:inline-block; */
+  width: 50%;
+}
+
+/* .App h1 {
+  color: aliceblue;
+} */
+
+.App h2 {
+  /* color: aliceblue; */
+  text-decoration-line: underline;
+}
+
+/* .App p {
+  color: aliceblue;
+} */
+
+/* .namesList {
+  float: right;
+  width: 100%;
+  /* flex: 1;  */
+  /* display:inline-block; 
+} */
+
+.maindiv {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}
